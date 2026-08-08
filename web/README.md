@@ -25,8 +25,8 @@ The obvious risk is two implementations drifting apart. `tests/parity.test.ts` c
 the **same** `corpus.jsonl` and `heldout.jsonl` the Python harness uses through the TypeScript port
 and asserts the metrics match. Duplication becomes verified parity, checked in CI.
 
-Those parity assertions are skipped while any detector is still a stub, since a partial port cannot
-match by definition. They activate automatically once all five are implemented.
+All five detectors are implemented and **parity currently passes on both corpora**: the port
+reproduces Python's 1.000 F1 on the development set and 0.350 recall on the held-out set exactly.
 
 ## Layout
 
@@ -39,13 +39,11 @@ tests/                vitest, including cross-language parity
 
 ## Status
 
-| Detector | State |
-|---|---|
-| `InstructionOverride` | implemented (reference example) |
-| `RoleplayJailbreak` | stub |
-| `DelimiterInjection` | stub |
-| `EncodingObfuscation` | stub |
-| `SystemPromptExfil` | stub |
+All five detectors are ported and passing: `InstructionOverride`, `RoleplayJailbreak`,
+`DelimiterInjection`, `EncodingObfuscation`, `SystemPromptExfil`.
 
-Each stub has a full test suite describing exactly what it must catch and, more importantly, what
-it must *not* catch. Run `npm test` to see them.
+`npm test` runs 74 tests, including the cross-language parity checks.
+
+Each detector has a test suite describing exactly what it must catch and, more importantly, what it
+must *not* catch. The benign cases are the interesting ones: `The system: a distributed queue`,
+`act as a proofreader`, and a base64 avatar all have to come back clean.

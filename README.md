@@ -19,6 +19,20 @@ blocked, and tune from data instead of guesswork.
 
 ---
 
+## Browser demo
+
+`web/` holds a Next.js + TypeScript demo: paste a prompt and see the verdict, the score, and the
+exact evidence each detector matched, highlighted in place.
+
+It runs the guard **entirely client-side**, so nothing typed into it is sent anywhere. That is
+possible because the guard is also implemented in TypeScript. Two implementations would normally
+drift apart, so `web/tests/parity.test.ts` runs the *same* corpora through the port and asserts the
+metrics match Python exactly. Duplication becomes verified parity, checked in CI.
+
+```bash
+cd web && npm install && npm run dev
+```
+
 ## Why this exists
 
 Prompt injection is the top entry in the OWASP Top 10 for LLM Applications, and it is unsolved.
