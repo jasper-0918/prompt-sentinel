@@ -24,3 +24,28 @@ jobs:
         run: python -m sentinel.cli eval
       - name: Evaluate (held-out corpus)
         run: python -m sentinel.cli eval --dataset heldout
+
+  web:
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: web
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "22"
+          cache: npm
+          cache-dependency-path: web/package-lock.json
+      - name: Install
+        run: npm ci
+      - name: Typecheck
+        run: npx tsc --noEmit
+      - name: Lint
+        run: npm run lint
+      # Includes the cross-language parity checks, which assert the TypeScript
+      # port reproduces the Python metrics on both corpora.
+      - name: Test
+        run: npm test
+      - name: Build
+        run: npm run build
