@@ -1,5 +1,7 @@
 # Prompt Sentinel
 
+**[Try the live demo →](https://prompt-sentinel-five.vercel.app)**
+
 Explainable prompt-injection and jailbreak detection for LLM applications. Pure Python, zero
 dependencies, runs entirely offline.
 
@@ -20,6 +22,8 @@ blocked, and tune from data instead of guesswork.
 ---
 
 ## Browser demo
+
+**Live at [prompt-sentinel-five.vercel.app](https://prompt-sentinel-five.vercel.app)**
 
 `web/` holds a Next.js + TypeScript demo: paste a prompt and see the verdict, the score, and the
 exact evidence each detector matched, highlighted in place.
