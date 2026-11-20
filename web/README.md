@@ -1,6 +1,6 @@
 # Prompt Sentinel — web demo
 
-**Live at [prompt-sentinel-five.vercel.app](https://prompt-sentinel-five.vercel.app)**
+**Live at [jasper-0918.github.io/prompt-sentinel](https://jasper-0918.github.io/prompt-sentinel/)**
 
 A browser demo of the guard. Paste a prompt, see the verdict, the score, and the exact evidence
 each detector matched.
